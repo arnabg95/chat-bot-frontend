@@ -17,7 +17,7 @@ const App = () => {
     const res = await (
       await fetch("http://127.0.0.1:8000/api/v1/chat/start-conversation", {
         method: "POST",
-        body: JSON.stringify({ guest_id: "8968", chat_id: "5656", msg: "hi" }),
+        body: JSON.stringify({ guest_id: "8968", chat_id: "5656", msg: inputText.trim() }),
         headers: {
           'Content-Type': 'application/json'
         },
