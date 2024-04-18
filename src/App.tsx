@@ -45,7 +45,7 @@ const App = () => {
       async function getChatIDs() {
         const res = await (
           await fetch(
-            "http://127.0.0.1:8000/api/v1/chat/get-chat-id-list/" + guestId
+            `${import.meta.env.VITE_API_URL}/api/v1/chat/get-chat-id-list/` + guestId
           )
         ).json();
         setchatIds(res.chatIds)
@@ -66,7 +66,7 @@ const App = () => {
       setLoading(true);
 
       const res = await (
-        await fetch("http://127.0.0.1:8000/api/v1/chat/start-conversation", {
+        await fetch(`${import.meta.env.VITE_API_URL}/api/v1/chat/start-conversation`, {
           method: "POST",
           body: JSON.stringify({
             guest_id: guestId,
@@ -96,7 +96,7 @@ const App = () => {
     setMessages([])
     const res = await (
       await fetch(
-        "http://127.0.0.1:8000/api/v1/chat/get-chat-details/" + e.target.value
+        `${import.meta.env.VITE_API_URL}/api/v1/chat/get-chat-details/` + e.target.value
       )
     ).json();
 
