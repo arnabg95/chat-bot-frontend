@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import Markdown from 'react-markdown'
 
 
 const App = () => {
@@ -33,7 +34,7 @@ const App = () => {
     const guestId = localStorage.getItem("guest");
     if (!guestId) {
       const id = uuidv4();
-      localStorage.setItem("guest", JSON.stringify(id));
+      localStorage.setItem("guest", id);
       setGuestId(id);
     } else {
       setGuestId(guestId);
@@ -143,10 +144,9 @@ const App = () => {
                   className={
                     message.type === "self" ? "user-message" : "bot-message"
                   }
-                  style={{ whiteSpace: "pre-wrap" }}
                   ref={messages.length - 1 === index ? lastMsg : null}
                 >
-                  {message.text}
+                  <Markdown>{message.text}</Markdown>
                 </div>
               </div>
             ))}
